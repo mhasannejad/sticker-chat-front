@@ -1,6 +1,6 @@
 <script>
     import {io} from "socket.io-client";
-    import {baseurl} from "./consts.js";
+    import {baseSocketUrl, baseurl} from "./consts.js";
     import axios from "axios";
     import {onMount} from "svelte";
     import {adjectives, colors, uniqueNamesGenerator} from "unique-names-generator";
@@ -17,7 +17,7 @@
     let messages = []
 
     let stickers = []
-    const socket = io('ws://localhost:3000')
+    const socket = io(baseSocketUrl)
     console.log(socket.readyState)
     socket.emit('message', {
         message: 'connected '

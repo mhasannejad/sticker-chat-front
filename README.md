@@ -6,4 +6,13 @@
 
  soon new features will come 
 
-check deployment in **url here**
+check deployment in **https://stickapp.netlify.app/**
+
+i will add the following soon:
+
+- persistent date 
+- profiles
+- topics to talk about
+- ability to discover and save stickers
+- score each other at end of topic
+- and ...

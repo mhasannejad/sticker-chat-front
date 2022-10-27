@@ -4,7 +4,9 @@
     import axios from "axios";
     import {onMount} from "svelte";
     import {adjectives, colors, uniqueNamesGenerator} from "unique-names-generator";
-
+    import {closeModal, Modals, openModal} from "svelte-modals";
+    import CreateSticker from "./modals/CreateSticker.svelte";
+    import { SvelteToast } from '@zerodevx/svelte-toast'
     console.log(baseurl)
     const customConfig = {
         dictionaries: [adjectives, colors],
@@ -74,12 +76,30 @@
         name = uniqueNamesGenerator(customConfig)
     }
 </script>
+<SvelteToast  />
+<Modals>
+    <div
+            slot="backdrop"
+            class="backdrop"
+            on:click={closeModal}
+    ></div>
+</Modals>
 
 <div class="row">
     <div class="col-md-4">
+        <button class="w-100" on:click={getAllStickers}>refresh</button>
         <div class="row">
+            <div class="col-md-4 my-1 sticker-cell">
+                <button class="h-100" on:click={()=>{
+                        openModal(CreateSticker, { title: "Alert", message: "This is an alert" })
+                    }}>
+                    <div class=" h-100">
+                        <img src="public/add_sticker.png" alt="" class="sticker-image">
+                    </div>
+                </button>
+            </div>
             {#each stickers as sticker}
-                <div class="col-md-4">
+                <div class="col-md-4 my-1 sticker-cell">
                     <button class="h-100" on:click={()=>{
                         sendMessage(sticker)
                     }}>
@@ -207,4 +227,15 @@
         place-content: end;
         overflow-y: scroll !important;
     }
+
+
+    .backdrop {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.50)
+    }
+
 </style>

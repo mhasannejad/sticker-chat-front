@@ -53,6 +53,25 @@ h1 {
     transition: border-color 0.25s;
 }
 
+.sticker-cell{
+    min-height: 110px !important;
+}
+
+.sticker-select{
+    max-width: 150px !important;
+    max-height: 150px !important;
+    border-radius: 16px !important;
+    border: 1px solid transparent;
+    margin: 5px;
+    cursor: pointer;
+
+}
+.sticker-select:hover{
+    background-color: azure;
+    transition: background-color 0.25s;
+}
+
+
 button {
     border-radius: 8px !important;
     border: 1px solid transparent;

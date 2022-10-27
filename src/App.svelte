@@ -85,37 +85,10 @@
     ></div>
 </Modals>
 
-<div class="row">
-    <div class="col-md-4">
-        <div class="row justify-content-center">
-            <button class="w-100" on:click={getAllStickers}>refresh</button>
-        </div>
-        <div class="row">
-            <div class="col-md-4 my-1 sticker-cell">
-                <button class="h-100" on:click={()=>{
-                        openModal(CreateSticker, { title: "Alert", message: "This is an alert" })
-                    }}>
-                    <div class=" h-100">
-                        <img src="/add_sticker.png" alt="" class="sticker-image">
-                    </div>
-                </button>
-            </div>
-            {#each stickers as sticker}
-                <div class="col-md-4 my-1 sticker-cell">
-                    <button class="h-100" on:click={()=>{
-                        sendMessage(sticker)
-                    }}>
-                        <div class=" h-100">
-                            <img src={baseurl+'/'+sticker.path} alt="" class="sticker-image">
-                        </div>
-                    </button>
-                </div>
-            {/each}
-
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="my-2 row">
+<div class="row align-content-center">
+    <div class="col-md-4 col-sm-12"></div>
+    <div class="col-md-4 col-sm-12 ">
+        <div class="my-2 row mx-3">
             <div class="col-md-3"></div>
             <p class="text-white col-md-6">
                 {name}
@@ -191,7 +164,35 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4"></div>
+
+    <div class="col-md-4 col-sm-12">
+        <div class="row justify-content-center mx-2">
+            <button class="w-100" on:click={getAllStickers}>refresh</button>
+        </div>
+        <div class="row">
+            <div class="col-md-4 my-1 sticker-cell col-sm-4 col-xs-4">
+                <button class="h-100" on:click={()=>{
+                        openModal(CreateSticker, { title: "Alert", message: "This is an alert" })
+                    }}>
+                    <div class=" h-100">
+                        <img src="/add_sticker.png" alt="" class="sticker-image">
+                    </div>
+                </button>
+            </div>
+            {#each stickers as sticker}
+                <div class="col-md-4 my-1 sticker-cell col-sm-4 col-xs-4">
+                    <button class="h-100" on:click={()=>{
+                        sendMessage(sticker)
+                    }}>
+                        <div class=" h-100">
+                            <img src={baseurl+'/'+sticker.path} alt="" class="sticker-image">
+                        </div>
+                    </button>
+                </div>
+            {/each}
+
+        </div>
+    </div>
 </div>
 
 <style>

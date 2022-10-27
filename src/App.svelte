@@ -87,14 +87,16 @@
 
 <div class="row">
     <div class="col-md-4">
-        <button class="w-100" on:click={getAllStickers}>refresh</button>
+        <div class="row justify-content-center">
+            <button class="w-100" on:click={getAllStickers}>refresh</button>
+        </div>
         <div class="row">
             <div class="col-md-4 my-1 sticker-cell">
                 <button class="h-100" on:click={()=>{
                         openModal(CreateSticker, { title: "Alert", message: "This is an alert" })
                     }}>
                     <div class=" h-100">
-                        <img src="public/add_sticker.png" alt="" class="sticker-image">
+                        <img src="/add_sticker.png" alt="" class="sticker-image">
                     </div>
                 </button>
             </div>

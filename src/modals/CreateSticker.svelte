@@ -82,7 +82,7 @@
                    bind:this={fileinput}/>
 
             <div class="d-flex justify-content-center">
-                <img src={sticker || 'public/add_sticker.png'} class="sticker-select" alt=""
+                <img src={sticker || '/add_sticker.png'} class="sticker-select" alt=""
                      on:click={()=>{fileinput.click();}}>
             </div>
             <div class="actions">

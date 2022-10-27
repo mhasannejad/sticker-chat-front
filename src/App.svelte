@@ -86,8 +86,8 @@
 </Modals>
 
 <div class="row align-content-center">
-    <div class="col-md-4 col-sm-12"></div>
-    <div class="col-md-4 col-sm-12 ">
+
+    <div class="col-md-8 col-sm-12 ">
         <div class="my-2 row mx-3">
             <div class="col-md-3"></div>
             <p class="text-white col-md-6">
@@ -155,7 +155,8 @@
 
             {/each}
         </div>
-        <div class="my-3">
+        <!-- please dont mess with the concept of app and dont change display on this  -->
+        <div class="my-3" style="display:none;">
             <div class="input-group">
                 <input type="text" placeholder="message" bind:value={message} class="form-control">
                 <button on:click={sendMsg} class="">

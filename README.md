@@ -8,7 +8,7 @@
 
 check deployment in **https://stickapp.netlify.app/**
 
-i will add the following soon:
+i will add the following soon features:
 
 - persistent date 
 - profiles

@@ -26,6 +26,7 @@ body {
     background-color: #242424 !important;
     margin: 0;
     font-family: Jost !important;
+    overflow-x: hidden;
 }
 
 h1 {
@@ -38,8 +39,9 @@ h1 {
 }
 
 #app {
-    margin: 0 auto;
-    padding: 2rem;
+    /*margin: 0 auto;*/
+    /*padding: 2rem;*/
+
     text-align: center;
 }
 
@@ -109,3 +111,25 @@ button:focus-visible {
         background-color: #f9f9f9;
     }
 }
+nav{
+    background-color: #1a1a1a !important;
+    color: white !important;
+}
+nav>*{
+    color: white !important;
+}
+label{
+    color: #212121 !important;
+}
+.accordion{
+    background-color: #212121 !important;
+}
+.accordion{
+    --bs-accordion-color: #fff!important;
+    --bs-accordion-bg: #222222 !important;
+    --bs-accordion-border-color: #000!important;
+    --bs-accordion-active-color: black!important;
+    --bs-accordion-btn-bg: #1a1a1a !important;
+    --bs-accordion-btn-color: #fff!important;
+}
+

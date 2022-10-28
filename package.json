@@ -21,6 +21,7 @@
     "dotenv": "^16.0.3",
     "socket.io": "^4.5.2",
     "socket.io-client": "^4.5.2",
+    "svelte-local-storage-store": "^0.3.1",
     "svelte-modals": "^1.2.0",
     "sveltestrap": "^5.9.0",
     "unique-names-generator": "^4.7.1"

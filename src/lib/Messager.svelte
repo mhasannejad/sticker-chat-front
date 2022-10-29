@@ -24,7 +24,13 @@
     let stickers = []
     let my_stickers = []
     const socket = io(baseSocketUrl)
+    let room_name = shortName
+
+
     console.log(socket.readyState)
+    socket.emit('room_join_req', {
+        room: shortName
+    })
     socket.emit('notification', {
         message: 'connected'
     })
@@ -46,7 +52,7 @@
     })
     const sendMsg = () => {
         socket.emit('chat_message', {
-            name: name,
+            user: $userData.user,
             message: {
                 type: 'text',
                 content: message
@@ -70,8 +76,8 @@
     }
 
     const sendMessage = (sticker) => {
-        socket.emit('chat_message', {
-            name: name,
+        socket.emit('chat_message'+room_name, {
+            user: $userData.user,
             message: {
                 type: 'sticker',
                 content: sticker
@@ -119,18 +125,23 @@
             }
         })
     }
+
+    const joinRoom = () => {
+        socket.emit('room_join_req', {
+            room: room_name
+        })
+    }
 </script>
 
 <div class="row align-content-center">
 
     <div class="col-md-7 col-sm-12 ">
         <div class="my-2 row mx-3">
-            <div class="col-md-3"></div>
-            <p class="text-white col-md-6">
-                {name}
-            </p>
-            <button on:click={changeName} class="col-md-3">
-                rename
+            <div class="col-md-3 "></div>
+            <input bind:value={room_name} type="text" name="" class="form-control bg-dark col-md-6 w-50 text-white"
+                   id="" >
+            <button on:click={joinRoom} class="col-md-3">
+                join
             </button>
         </div>
 
@@ -138,12 +149,12 @@
         <div class="message-list">
             {#each messages as msg}
                 {#if msg.message.type === 'text'}
-                    {#if msg.name === name}
+                    {#if msg.user.email === $userData.user.email}
                         <div class="row align-items-end message" style="align-items: end!important;">
                             <div class="col-md-8"></div>
                             <div class="col-md-4 align-self-end">
                                 <p class="name is-sender">
-                                    {msg.name}
+                                    {msg.user.email}
                                 </p>
                                 <p class="body is-sender">
                                     {msg.message.content}
@@ -154,7 +165,7 @@
                         <div class="row align-items-start message">
                             <div class="col-md-4 align-self-start">
                                 <p class="name">
-                                    {msg.name}
+                                    {msg.user.email}
                                 </p>
                                 <p class="body">
                                     {msg.message.content}
@@ -164,12 +175,12 @@
                         </div>
                     {/if}
                 {:else}
-                    {#if msg.name === name}
+                    {#if msg.user.email === $userData.user.email}
                         <div class="row align-items-end message" style="align-items: end!important;">
                             <div class="col-md-8"></div>
                             <div class="col-md-4 align-self-end">
                                 <p class="name is-sender">
-                                    {msg.name}
+                                    {msg.user.email}
                                 </p>
                                 <img src={baseurl+'/'+msg.message.content.path} class="sticker-image" alt="">
 
@@ -179,7 +190,7 @@
                         <div class="row align-items-start message">
                             <div class="col-md-4 align-self-start">
                                 <p class="name">
-                                    {msg.name}
+                                    {msg.user.email}
                                 </p>
 
                                 <img src={baseurl+'/'+msg.message.content.path} class="sticker-image" alt="">
